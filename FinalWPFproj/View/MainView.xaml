@@ -1,0 +1,80 @@
+﻿<Window x:Class="FinalWPFproj.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinalWPFproj.View"
+        xmlns:vm="clr-namespace:FinalWPFproj.ViewModel"
+        mc:Ignorable="d"
+        Title="MainView" Height="450" Width="800">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <Window.Background>
+        <ImageBrush ImageSource="https://www.pngmagic.com/product_images/website-background-image-size-psd-vector-photo.jpg"></ImageBrush>
+    </Window.Background>
+    
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
+        <ContentControl Background="Transparent" Grid.Column="1" Content="{Binding CurrentView}"></ContentControl>
+        <StackPanel Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.ColumnSpan="1" Text="{Binding SearchString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="35" FontSize="15" 
+                         Padding="0,6,0,0"
+                         />
+                <Button IsEnabled="False" Margin="3" Grid.Column="1" Width="40" Height="35">
+                    <Image Source="../Images/lupa.png"></Image>
+                </Button>
+            </Grid>
+            <Border
+                    Width="160"
+                    BorderBrush="White"
+                    CornerRadius="10"
+                    BorderThickness="1"
+                    Margin="0,20,0,0" 
+                    >
+                <Button Focusable="False" Width="150" Height="20" Background="Transparent" Foreground="White" BorderBrush="Transparent"  Command="{Binding ShowPictureListCommand}" >Show list</Button>
+            </Border>
+
+            <Border
+                    Width="160"
+                    BorderBrush="White"
+                    CornerRadius="10"
+                    BorderThickness="1"
+                    Margin="0,20,0,0" 
+                    >
+                <Button Width="150" Height="20" Background="Transparent" Foreground="White" BorderBrush="Transparent"  Command="{Binding CreateCommand}" >Create</Button>
+            </Border>
+
+            <Border
+                    Width="160"
+                    BorderBrush="White"
+                    CornerRadius="10"
+                    BorderThickness="1"
+                    Margin="0,20,0,0" 
+                    >
+                <Button Width="150" Height="20" Background="Transparent" Foreground="White" BorderBrush="Transparent"  Command="{Binding UpdateCommand}" >Update</Button>
+            </Border>
+            <Border
+                    Width="160"
+                    BorderBrush="White"
+                    CornerRadius="10"
+                    BorderThickness="1"
+                    Margin="0,20,0,0" 
+                    >
+                <Button Width="150" Height="20" Background="Transparent" Foreground="White" BorderBrush="Transparent"  Command="{Binding DeleteCommand}" >Delete</Button>
+            </Border>
+           
+        </StackPanel>
+    </Grid>
+</Window>
